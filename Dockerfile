@@ -28,7 +28,8 @@ RUN pip install nose --no-cache-dir \
     && rm -rf /tmp/*
 
 RUN pip3 install --no-cache-dir \
-    umap-learn==0.3.9 bbknn==1.3.5 scanorama==1.4 \
+    umap-learn==0.3.9 bbknn==1.3.5 scanorama==1.4
+    scanpy==1.4.4.post1 \
     scrublet \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
