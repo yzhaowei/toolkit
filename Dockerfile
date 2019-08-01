@@ -11,7 +11,8 @@ RUN install2.r --error \
     # dependency for immunarch
     heatmap3 factoextra fpc circlize shinythemes treemap airr ggseqlogo UpSetR ggalluvial \
     # install github packages
-    && installGithub.r immunogenomics/harmony yycunc/SMNN \
+    && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data \
+      timoast/signac hms-dbmi/conos \
     ## from bioconductor
     && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db'))" \
     && wget "https://github.com/immunomind/immunarch/releases/download/latest/immunarch.tar.gz" \
