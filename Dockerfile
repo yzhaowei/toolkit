@@ -1,4 +1,4 @@
-FROM yzhaowei/toolkit-base:v0.1
+FROM yzhaowei/toolkit-base:v0.2
 
 USER root
 
@@ -10,6 +10,8 @@ RUN install2.r --error \
     tictoc \
     # dependency for immunarch
     heatmap3 factoextra fpc circlize shinythemes treemap airr ggseqlogo UpSetR ggalluvial \
+    # dependency for Signac
+    && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome'))" \
     # install github packages
     && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data \
       timoast/signac hms-dbmi/conos \
@@ -18,9 +20,16 @@ RUN install2.r --error \
     && wget "https://github.com/immunomind/immunarch/releases/download/latest/immunarch.tar.gz" \
     && install2.r immunarch.tar.gz \
     && rm immunarch.tar.gz \
-    && rm ~/.wget-hsts
+    && rm ~/.wget-hsts \
+    && rm -rf /tmp/*
+
+RUN pip install nose --no-cache-dir \
+    && rm -rf /var/lib/apt/lists/*  \
+    && rm -rf /tmp/*
 
 RUN pip3 install --no-cache-dir \
-    umap-learn==0.3.9 bbknn==1.3.5 scanorama==1.4
+    umap-learn==0.3.9 bbknn==1.3.5 scanorama==1.4 \
+    && rm -rf /var/lib/apt/lists/*  \
+    && rm -rf /tmp/*
 
 USER ${NB_USER}
