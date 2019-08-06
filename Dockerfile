@@ -37,7 +37,7 @@ RUN pip3 install --no-cache-dir \
 RUN install2.r --error \
     --deps TRUE \
     doParallel \
-    && R -e "BiocManager::install(c(batchelor))" \
+    && R -e "BiocManager::install(c('batchelor'))" \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
 
