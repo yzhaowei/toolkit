@@ -10,11 +10,11 @@ RUN install2.r --error \
     # dependency for immunarch
     heatmap3 factoextra fpc circlize shinythemes treemap airr ggseqlogo UpSetR ggalluvial \
     # dependency for Signac
-    && R -e "devtools::install_github(repo = 'satijalab/seurat', ref = 'develop')" \
     && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome'))" \
     # install github packages
     && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data \
       timoast/signac hms-dbmi/conos \
+    && R -e "devtools::install_github(repo = 'satijalab/seurat', ref = 'develop')" \
     ## from bioconductor
     && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db'))" \
     && wget "https://github.com/immunomind/immunarch/releases/download/latest/immunarch.tar.gz" \
