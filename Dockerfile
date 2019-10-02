@@ -16,7 +16,7 @@ RUN install2.r --error \
       timoast/signac hms-dbmi/conos satijalab/seurat sjessa/ggmin \
     ## from bioconductor
     && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db'))" \
-    && wget "https://github.com/immunomind/immunarch/releases/download/latest/immunarch.tar.gz" \
+    && wget "https://github.com/immunomind/immunarch/raw/master/immunarch.tar.gz" \
     && install2.r immunarch.tar.gz \
     && rm immunarch.tar.gz \
     && rm ~/.wget-hsts \
@@ -35,7 +35,7 @@ RUN pip3 install --no-cache-dir \
 
 RUN install2.r --error \
     --deps TRUE \
-    doParallel future \
+    doParallel future psych \
     && R -e "BiocManager::install(c('batchelor'))" \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
