@@ -35,7 +35,7 @@ RUN pip3 install --no-cache-dir \
 
 RUN install2.r --error \
     --deps TRUE \
-    doParallel future psych \
+    doParallel future psych citr \
     && R -e "BiocManager::install(c('batchelor', 'SingleR', 'scRNAseq','esATAC'))" \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
