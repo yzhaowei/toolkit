@@ -23,7 +23,6 @@ RUN install2.r --error \
     && rm -rf /tmp/*
 
 RUN pip install nose snaptools --no-cache-dir \
-    && installGithub.r r3fang/SnapATAC \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
 
