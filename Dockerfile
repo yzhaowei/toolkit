@@ -4,18 +4,18 @@ USER root
 
 RUN install2.r --error \
     --deps TRUE \
-    ggpubr pheatmap \
+    ggpubr pheatmap msigdbr \
     # benchmark
     tictoc \
     # dependency for immunarch
     heatmap3 factoextra fpc circlize shinythemes treemap airr ggseqlogo UpSetR ggalluvial \
     # dependency for Signac
-    && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome'))" \
+    && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome', 'GSVA'))" \
     # install github packages
     && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data chris-mcginnis-ucsf/DoubletFinder \
       timoast/signac hms-dbmi/conos satijalab/seurat sjessa/ggmin \
     ## from bioconductor
-    && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db'))" \
+    && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db', 'GSVA'))" \
     && wget "https://github.com/immunomind/immunarch/raw/master/immunarch.tar.gz" \
     && install2.r immunarch.tar.gz \
     && rm immunarch.tar.gz \
