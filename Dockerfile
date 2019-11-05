@@ -36,8 +36,8 @@ RUN pip3 install --no-cache-dir \
 RUN install2.r --error \
     --deps TRUE \
     doParallel future psych citr ggnewscale \
-    && R -e "BiocManager::install(c('batchelor', 'SingleR', 'scRNAseq','esATAC','mygene'))" \
-    && installGithub.r cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 cole-trapnell-lab/garnett@monocle3 \
+    && R -e "BiocManager::install(c('batchelor', 'scRNAseq','esATAC','mygene'))" \
+    && installGithub.r cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
 
