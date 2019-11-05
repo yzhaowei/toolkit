@@ -13,7 +13,7 @@ RUN install2.r --error \
     && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome', 'GSVA', 'BiocGenerics','DelayedArray','DelayedMatrixStats','SingleCellExperiment','SummarizedExperiment'))" \
     # install github packages
     && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data chris-mcginnis-ucsf/DoubletFinder \
-      timoast/signac hms-dbmi/conos satijalab/seurat sjessa/ggmin cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 cole-trapnell-lab/garnett@monocle3 \
+      timoast/signac hms-dbmi/conos satijalab/seurat sjessa/ggmin \
     ## from bioconductor
     && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db', 'org.Mm.eg.db', 'GSVA'))" \
     && wget "https://github.com/immunomind/immunarch/raw/master/immunarch.tar.gz" \
@@ -37,6 +37,7 @@ RUN install2.r --error \
     --deps TRUE \
     doParallel future psych citr ggnewscale \
     && R -e "BiocManager::install(c('batchelor', 'SingleR', 'scRNAseq','esATAC','mygene'))" \
+    && installGithub.r cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 cole-trapnell-lab/garnett@monocle3 \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
 
