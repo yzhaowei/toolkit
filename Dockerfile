@@ -22,7 +22,7 @@ RUN install2.r --error \
     && rm ~/.wget-hsts \
     && rm -rf /tmp/*
 
-RUN pip install nose snaptools --no-cache-dir \
+RUN pip install nose snaptools limix --no-cache-dir \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
 
@@ -35,8 +35,8 @@ RUN pip3 install --no-cache-dir \
 
 RUN install2.r --error \
     --deps TRUE \
-    doParallel future psych citr ggnewscale \
-    && R -e "BiocManager::install(c('batchelor', 'scRNAseq','esATAC','mygene'))" \
+    doParallel future psych citr ggnewscale ape  \
+    && R -e "BiocManager::install(c('batchelor', 'scRNAseq','esATAC','mygene','ComplexHeatmap','tidytree','treeio','ggtree'))" \
     && installGithub.r cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 \
     && rm -rf /var/lib/apt/lists/*  \
     && rm -rf /tmp/*
