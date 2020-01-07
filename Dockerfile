@@ -12,8 +12,8 @@ RUN install2.r --error \
     # dependency for Signac
     && R -e "BiocManager::install(c('AnnotationFilter', 'GenomeInfoDb', 'GenomicFeatures', 'GenomicRanges', 'IRanges', 'Rsamtools', 'TFBSTools', 'ggbio', 'motifmatchr', 'AnnotationDbi', 'Biostrings', 'BSgenome', 'GSVA', 'BiocGenerics','DelayedArray','DelayedMatrixStats','SingleCellExperiment','SummarizedExperiment'))" \
     # install github packages
-    && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat-wrappers satijalab/seurat-data chris-mcginnis-ucsf/DoubletFinder \
-      timoast/signac hms-dbmi/conos satijalab/seurat sjessa/ggmin \
+    && installGithub.r immunogenomics/harmony yycunc/SMNN satijalab/seurat satijalab/seurat-wrappers satijalab/seurat-data chris-mcginnis-ucsf/DoubletFinder \
+      timoast/signac hms-dbmi/conos sjessa/ggmin \
     ## from bioconductor
     && R -e "BiocManager::install(c('phyloseq', 'DESeq2', 'scran', 'scater', 'limma', 'sva', 'org.Hs.eg.db', 'org.Mm.eg.db', 'GSVA'))" \
     && wget "https://github.com/immunomind/immunarch/raw/master/immunarch.tar.gz" \
