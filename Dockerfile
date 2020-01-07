@@ -35,7 +35,7 @@ RUN pip3 install --no-cache-dir \
 
 RUN install2.r --error \
     --deps TRUE \
-    doParallel future psych citr ggnewscale ape  \
+    doParallel future psych citr ggnewscale ape scatterplot3d  \
     && R -e "BiocManager::install(c('batchelor', 'scRNAseq','esATAC','mygene','ComplexHeatmap','tidytree','treeio','ggtree'))" \
     && installGithub.r cole-trapnell-lab/leidenbase cole-trapnell-lab/monocle3 \
     && rm -rf /var/lib/apt/lists/*  \
