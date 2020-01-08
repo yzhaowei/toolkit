@@ -1,4 +1,4 @@
-FROM yzhaowei/toolkit-base:v0.3
+FROM yzhaowei/toolkit-base:R3.6.2
 
 USER root
 
